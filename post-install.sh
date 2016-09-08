@@ -6,7 +6,7 @@ declare -a portsudp=("")
 
 epel-install(){
   sudo yum -t -y -e 0 install epel-release
-  sudo yum update
+  sudo yum -t -y -e 0 update
   echo "Epel Installed"
 }
 
@@ -23,7 +23,7 @@ firewalld-install(){
   for i in "${portsudp[@]}"
   do
     echo "Liberando a porta $i udp"
-  sudo firewall-cmd --permanent --add-port=$i/tcp
+  sudo firewall-cmd --permanent --add-port=$i/udp
   done
 
 }
@@ -54,6 +54,7 @@ ntp-install(){
 
   echo "Installing ntp"
   sudo yum -t -y -e 0 install ntp
+  timedatectl set-timezone America/Sao_Paulo
   systemctl start ntpd
   systemctl enable ntpd
 
