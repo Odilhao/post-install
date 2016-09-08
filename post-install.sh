@@ -1,6 +1,6 @@
 #!/bin/bash
 
-declare -a portstcp=("22" "80")
+declare -a portstcp=("22" "80" "443")
 declare -a portsudp=("")
 
 
